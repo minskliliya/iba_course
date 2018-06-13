@@ -4,15 +4,22 @@ import OutputWindow from './OutputWindow';
 import Buttons from './Buttons';
 
 class Calculator extends Component {
+  state = {
+    inputValue: ''
+  };
 
+  handleClick= (inputValue) => { 
+    this.setState({inputValue: inputValue});
+  };
   render(){
     return (
       <div>
-        <InputWindow  /><br/>
+        <InputWindow inputs={this.state.inputValue} /><br/>
         <OutputWindow />
         <Buttons 
           values={this.props.inputs}
           actions={this.props.actions}
+          handleClick={this.handleClick}    
         />
       </div>  
     );

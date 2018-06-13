@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 
 class Buttons extends Component {  
-  render(){
+  state = { 
+		valueInput: undefined
+  };
+  
+  handleClick = (e) => { 
+    this.setState({
+      valueInput: e.target.value
+    })
+    this.props.handleClick(this.state.valueInput);
+    console.log(this.state.valueInput);
+  }
+
+  render(){    
     let buttons = this.props.values.map((value) => (
       <button
-        value={value}        
+        value={value}    
+        onClick={this.handleClick}    
         >      
         {value}
       </button>
